@@ -81,12 +81,12 @@ BackgroundAlternate=#fcb297
 BackgroundNormal=#fcb297
 DecorationFocus=#fcb297
 DecorationHover=#e7beaf
-ForegroundActive=#55200a
-ForegroundInactive=#55200a
+ForegroundActive=#552009
+ForegroundInactive=#552009
 ForegroundLink=#004b73
 ForegroundNegative=#920023
 ForegroundNeutral=#753400
-ForegroundNormal=#55200a
+ForegroundNormal=#552009
 ForegroundPositive=#005228
 ForegroundVisited=#74009f
 
@@ -108,7 +108,7 @@ ForegroundVisited=#ebb2ff
 BackgroundAlternate=#271e1a
 BackgroundNormal=#180f0c
 DecorationFocus=#fcb297
-DecorationHover=#8f4c33
+DecorationHover=#8e4c32
 ForegroundActive=#f1dfd9
 ForegroundInactive=#a08d86
 ForegroundLink=#8fc9fc
@@ -134,7 +134,7 @@ ForegroundVisited=#ebb2ff
 
 [General]
 ColorScheme=MaterialYouDark
-ColorSchemeHash=a2797bef9db576bbc45b264337706155d1621673
+ColorSchemeHash=350e7d0b3fe35d575161bc95ef32066ebedbe057
 LastUsedCustomAccentColor=184,117,220
 TerminalApplication=kitty -1
 XftHintStyle=hintslight
@@ -180,5 +180,5 @@ activeFont=Google Sans Flex,10,-1,5,500,0,0,0,0,0,0,0,0,0,0,1,Medium
 activeForeground=241,223,217
 inactiveBackground=93,64,53
 inactiveBlend=161,169,177
-inactiveForeground=255,219,207
+inactiveForeground=255,219,206
 

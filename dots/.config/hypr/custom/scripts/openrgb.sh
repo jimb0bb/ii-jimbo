@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
-BG="ffb59a"
+BG="ffb599"
 DARK_MODE="true"
 
 # Color candidates (baked by matugen at template time)
-DARK_NORMAL="ff581b"
+DARK_NORMAL="ff591a"
 LIGHT_NORMAL="ffffff"
-DARK_NORMAL_BOOSTED="ff581b"
+DARK_NORMAL_BOOSTED="ff591a"
 LIGHT_NORMAL_BOOSTED="ffffff"
 
 # --- Extract RGB from BG ---
