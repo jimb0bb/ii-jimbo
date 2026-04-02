@@ -118,7 +118,6 @@ Singleton {
                 property int fakeScreenRounding: 2 // 0: None | 1: Always | 2: When not fullscreen | 3: Wrapped
                 property int wrappedFrameThickness: 10
                 property bool sharpMode: false
-                property int defaultBorderRadius: 18
                 property bool toggleWindowRounding: true // Changes Hyprland window rounding to 0 if sharpMode is true
                 property JsonObject fonts: JsonObject {
                     property bool enableCustom: false
@@ -237,7 +236,7 @@ Singleton {
                             property bool enable: true
                             property real brightness: 10
                         }
-                        property JsonObject visualizer: JsonObject {
+                        property JsonObject visualizer2: JsonObject {
                             property bool enable: false
                             property real opacity: 0.15
                             property int smoothing: 2
@@ -250,8 +249,25 @@ Singleton {
                         property real x: 400
                         property real y: 100
                     }
-                }
-                property bool animateWallpaperChanges: true
+                    property JsonObject visualizer: JsonObject {
+                        property bool enable: false
+                        property bool showWhenLocked: false
+                        property bool hideWhenCovered: true
+                        property bool hideWhenFullscreen: true
+                        property int height: 600 // in pixels
+                        property real barRounding: 0.5
+                        property real smoothing: 0.05
+                        property real opacity: 1
+                        property real barSpacing: 10 // in pixels
+                        property int targetBarWidth: 50 // in pixles, rough target
+                        property bool mono: true
+                        property string mode: "bars" // "bars" or "wave"
+                        property real waveFillOpacity: 0.5
+                        property real dataSmoothing: 0.5
+                        property int waveBorderWidth: 3    // 0 = no border
+                        property int renderEveryXFrames: -1  // -1 = auto (System), 1 = every frame, 2 = every other frame, etc. Only for "wave" mode
+                    }
+            }
                 property string wallpaperPath: ""
                 property string thumbnailPath: ""
                 property bool hideWhenFullscreen: true

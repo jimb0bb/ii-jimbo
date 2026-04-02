@@ -8,6 +8,7 @@ import qs.modules.common
 import qs.modules.common.widgets
 import qs.modules.common.functions
 
+
 RippleButton {
     id: root
     readonly property string builtInThemeDirectory: Directories.defaultThemes
@@ -22,14 +23,12 @@ RippleButton {
 
     property bool customTheme: false
     readonly property string customThemeFilePath: customThemeDirectory + "/" + colorScheme + ".json"
-    readonly property string customThemeCommand: `jq -r '.primary, .primary_container, .secondary' ${customThemeFilePath}`  
+    readonly property string customThemeCommand: `jq -r '.primary, .primary_container, .secondary' ${customThemeFilePath}`
 
     readonly property string wallpaperPath: Config.options.background.wallpaperPath
     readonly property string scriptPath: FileUtils.trimFileProtocol(`${Directories.scriptPath}/colors/generate_colors_material.py`)
-
     property string fullCommand: `python3 ${root.scriptPath} --path ${root.wallpaperPath} --scheme ${root.colorScheme} --preview`
 
-    // these are not actually primary, secondary and tertiary, they are just the three colors we get from the script
     property color primaryColor: "transparent"
     property color secondaryColor: "transparent"
     property color tertiaryColor: "transparent"
@@ -62,7 +61,7 @@ RippleButton {
         }
     }
 
-    property var effectiveCommand:  root.customTheme ? root.customThemeCommand
+   property var effectiveCommand:  root.customTheme ? root.customThemeCommand
                                     : root.builtInTheme ? root.builtInThemeCommand
                                     : root.fullCommand
 
@@ -124,10 +123,9 @@ RippleButton {
             id: myCanvas
             anchors.centerIn: parent
             anchors.margins: 8
-
             implicitWidth: root.implicitHeight - 16
             implicitHeight: root.implicitHeight - 16
-
+            
             antialiasing: true
 
             onPaint: {
@@ -138,6 +136,7 @@ RippleButton {
 
                 ctx.reset();
 
+                // there should be a better way than this...
                 if (root.sharpMode) {
                     ctx.fillStyle = root.primaryColor;
                     ctx.fillRect(0, 0, width, centerY);
@@ -168,5 +167,7 @@ RippleButton {
                 }
             }
         }
+
     }
+
 }

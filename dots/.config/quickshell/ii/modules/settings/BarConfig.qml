@@ -445,9 +445,10 @@ ContentPage {
                 }
             }
         }
-        
+
         ContentSubsection {
             title: Translation.tr("Record")
+
 
             ConfigSwitch {
                 buttonIcon: "check_indeterminate_small"
@@ -458,6 +459,7 @@ ContentPage {
                 }
             }
         }
+
     }
 
     ContentSection {

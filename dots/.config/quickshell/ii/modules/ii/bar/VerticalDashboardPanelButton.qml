@@ -52,6 +52,7 @@ RippleButton { // Right sidebar button
                 color: rightSidebarButton.colText
             }
         }
+
         Revealer {
             vertical: true
             reveal: Audio.sink?.audio?.muted ?? false

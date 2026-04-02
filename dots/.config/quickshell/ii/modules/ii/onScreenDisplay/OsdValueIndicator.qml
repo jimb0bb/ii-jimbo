@@ -82,6 +82,7 @@ Item {
                         Layout.preferredWidth: 30
                         horizontalAlignment: Text.AlignRight
                         text: Math.round(root.value * 100)
+                        
                     }
                 }
                 

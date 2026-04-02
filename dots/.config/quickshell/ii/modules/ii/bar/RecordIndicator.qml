@@ -12,6 +12,7 @@ MouseArea {
 
     property bool minimal: Config.options.bar.indicators.record.minimal
     property bool activelyRecording: Persistent.states.screenRecord.active
+
     property color colText: Appearance.colors.colOnPrimary
 
     hoverEnabled: true
@@ -93,6 +94,7 @@ MouseArea {
             MaterialSymbol {
                 Layout.topMargin: parent.spacing
                 Layout.alignment: Text.AlignHCenter
+                id: iconIndicator
                 text: "screen_record"
                 color: indicator.colText
                 iconSize: Appearance.font.pixelSize.larger
@@ -107,6 +109,7 @@ MouseArea {
                 iconSize: Appearance.font.pixelSize.larger
                 horizontalAlignment: Text.AlignHCenter
             }
+
         }
     }
     

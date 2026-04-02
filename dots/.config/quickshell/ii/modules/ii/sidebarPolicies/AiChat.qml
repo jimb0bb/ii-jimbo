@@ -698,30 +698,30 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 return;
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}provider`)) {
                                 root.suggestionQuery = messageInputField.text.split(" ")[1] ?? "";
-                                
+
                                 const providers = Object.keys(Ai.models)
-                                
+
                                 const providerResults = Fuzzy.go(root.suggestionQuery, providers.map(p => ({
                                     name: Fuzzy.prepare(p),
-                                    obj: p
+                                                                                                           obj: p
                                 })), {
                                     all: true,
                                     key: "name"
                                 });
-                                
+
                                 root.suggestionList = providerResults.map(result => {
                                     const providerName = result.target;
                                     const providerInfo = Ai.models[providerName];
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "provider ") : ""}${providerName}`,
-                                        displayName: providerInfo.name.split(" -")[0], // Remove " - model name"
-                                        description: providerInfo.description
+                                                                          displayName: providerInfo.name.split(" -")[0], // Remove " - model name"
+                                                                          description: providerInfo.description
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}model`)) {
                                 root.suggestionQuery = messageInputField.text.split(" ")[1] ?? "";
                             
-                                const providerModels = Ai.modelsOfProviders[Persistent.states.ai.provider] || [];
+                            const providerModels = Ai.modelsOfProviders[Persistent.states.ai.provider] || [];
                             
                                 const modelList = providerModels.map(model => ({
                                     name: Fuzzy.prepare(model.value),
@@ -736,11 +736,11 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 root.suggestionList = modelResults.map(result => {
                                     const modelValue = result.target;
                                     const model = providerModels.find(m => m.value === modelValue);
-                                    
+
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "model ") : ""}${model.value}`,
-                                        displayName: model.title,
-                                        description: model.modelProvider ? `Provider: ${model.modelProvider}` : `${Ai.currentProvider} model`
+                                                                       displayName: model.title,
+                                                                       description: model.modelProvider ? `Provider: ${model.modelProvider}` : `${Ai.currentProvider} model`
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}prompt`)) {
@@ -748,7 +748,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 const promptFileResults = Fuzzy.go(root.suggestionQuery, Ai.promptFiles.map(file => {
                                     return {
                                         name: Fuzzy.prepare(file),
-                                        obj: file
+                                                                                                            obj: file
                                     };
                                 }), {
                                     all: true,
@@ -757,8 +757,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 root.suggestionList = promptFileResults.map(file => {
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "prompt ") : ""}${file.target}`,
-                                        displayName: `${FileUtils.trimFileExt(FileUtils.fileNameForPath(file.target))}`,
-                                        description: Translation.tr("Load prompt from %1").arg(file.target)
+                                                                            displayName: `${FileUtils.trimFileExt(FileUtils.fileNameForPath(file.target))}`,
+                                                                            description: Translation.tr("Load prompt from %1").arg(file.target)
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}save`)) {
@@ -766,18 +766,19 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 const promptFileResults = Fuzzy.go(root.suggestionQuery, Ai.savedChats.map(file => {
                                     return {
                                         name: Fuzzy.prepare(file),
-                                        obj: file
+                                                                                                           obj: file
                                     };
                                 }), {
                                     all: true,
                                     key: "name"
                                 });
+
                                 root.suggestionList = promptFileResults.map(file => {
                                     const chatName = FileUtils.trimFileExt(FileUtils.fileNameForPath(file.target)).trim();
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "save ") : ""}${chatName}`,
-                                        displayName: `${chatName}`,
-                                        description: Translation.tr("Save chat to %1").arg(chatName)
+                                                                            displayName: `${chatName}`,
+                                                                            description: Translation.tr("Save chat to %1").arg(chatName)
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}load`)) {
@@ -785,7 +786,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 const promptFileResults = Fuzzy.go(root.suggestionQuery, Ai.savedChats.map(file => {
                                     return {
                                         name: Fuzzy.prepare(file),
-                                        obj: file
+                                                                                                           obj: file
                                     };
                                 }), {
                                     all: true,
@@ -795,8 +796,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                     const chatName = FileUtils.trimFileExt(FileUtils.fileNameForPath(file.target)).trim();
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "load ") : ""}${chatName}`,
-                                        displayName: `${chatName}`,
-                                        description: Translation.tr(`Load chat from %1`).arg(file.target)
+                                                                            displayName: `${chatName}`,
+                                                                            description: Translation.tr(`Load chat from %1`).arg(file.target)
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(`${root.commandPrefix}tool`)) {
@@ -804,7 +805,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                 const toolResults = Fuzzy.go(root.suggestionQuery, Ai.availableTools.map(tool => {
                                     return {
                                         name: Fuzzy.prepare(tool),
-                                        obj: tool
+                                                                                                         obj: tool
                                     };
                                 }), {
                                     all: true,
@@ -814,8 +815,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                                     const toolName = tool.target;
                                     return {
                                         name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "tool ") : ""}${tool.target}`,
-                                        displayName: toolName,
-                                        description: Ai.toolDescriptions[toolName]
+                                                                      displayName: toolName,
+                                                                      description: Ai.toolDescriptions[toolName]
                                     };
                                 });
                             } else if (messageInputField.text.startsWith(root.commandPrefix)) {
@@ -829,10 +830,10 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                             }
                         }
 
-                        function accept() {
-                            root.handleInput(text);
-                            text = "";
-                        }
+                function accept() {
+                    root.handleInput(text);
+                    text = "";
+                }
 
                         Keys.onPressed: event => {
                             if (event.key === Qt.Key_Tab) {
@@ -844,7 +845,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                             } else if (event.key === Qt.Key_Down && suggestions.visible) {
                                 suggestions.selectedIndex = Math.min(root.suggestionList.length - 1, suggestions.selectedIndex + 1);
                                 event.accepted = true;
-                            } else if ((event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
+                           } else if ((event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
                                 if (event.modifiers & Qt.ShiftModifier) {
                                     // Insert newline
                                     messageInputField.insert(messageInputField.cursorPosition, "\n");
@@ -892,6 +893,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                         }
                     }
                 }
+
                 RippleButton { // Send button
                     id: sendButton
                     Layout.alignment: Qt.AlignBottom

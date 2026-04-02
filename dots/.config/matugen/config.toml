@@ -32,3 +32,12 @@ output_path = '~/.local/state/quickshell/user/generated/color.txt'
 [templates.wallpaper]
 input_path = '~/.config/matugen/templates/wallpaper.txt'
 output_path = '~/.local/state/quickshell/user/generated/wallpaper/path.txt'
+
+[templates.discord]
+input_path = '/home/horia/.config/matugen/templates/discord.css'
+output_path = '/home/horia/.config/vesktop/themes/midnight.css'
+
+[templates.openrgb]
+input_path = '~/.config/matugen/templates/openrgb.sh'
+output_path = '/home/horia/.config/hypr/custom/scripts/openrgb.sh'
+post_hook = '/home/horia/.config/hypr/custom/scripts/openrgb.sh'

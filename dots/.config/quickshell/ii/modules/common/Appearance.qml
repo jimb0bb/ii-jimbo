@@ -30,8 +30,8 @@ Singleton {
         let y = 0.5768 * (x * x) - 0.759 * (x) + 0.2896
         return Math.max(0, Math.min(0.22, y)) - 0.12 * (m3colors.darkmode ? 0 : 1)
     }
-    property real autoContentTransparency: 0.9
-    property real backgroundTransparency: Config?.options.appearance.transparency.enable ? Config?.options.appearance.transparency.automatic ? autoBackgroundTransparency : Config?.options.appearance.transparency.backgroundTransparency : 0
+    property real autoContentTransparency: m3colors.darkmode ? 0.3 : 0
+    property real backgroundTransparency: Config?.options.appearance.transparency.enable ? m3colors.darkmode ? 0.2 : 0.1 : 0
     property real contentTransparency: Config?.options.appearance.transparency.automatic ? autoContentTransparency : Config?.options.appearance.transparency.contentTransparency
 
     m3colors: QtObject {

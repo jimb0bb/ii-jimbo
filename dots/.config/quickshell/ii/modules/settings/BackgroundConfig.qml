@@ -9,7 +9,7 @@ ContentPage {
     readonly property int index: 3
     property bool register: parent.register ?? false
     forceWidth: true
-    
+
     property bool allowHeavyLoads: false
     Component.onCompleted: Qt.callLater(() => page.allowHeavyLoads = true)
 
@@ -57,14 +57,6 @@ ContentPage {
                 Config.options.background.parallax.workspaceZoom = value / 100;
             }
         }
-        ConfigSwitch {
-            buttonIcon: "masked_transitions"
-            text: Translation.tr("Animate wallpaper changes")
-            checked: Config.options.background.animateWallpaperChanges
-            onCheckedChanged: {
-                Config.options.background.animateWallpaperChanges = checked;
-            }
-        }
     }
 
     ContentSection {
@@ -99,32 +91,32 @@ ContentPage {
                 }
             }
         }
-        
 
-        Loader { 
+
+        Loader {
             id: mediaModeBackgroundShapeLoader
             active: false
             visible: active
             Layout.fillWidth: true
             sourceComponent: ContentSubsection {
                 title: Translation.tr("Background shape")
-                
+
                 ConfigSelectionArray {
                     currentValue: Config.options.background.mediaMode.backgroundShape
                     onSelected: newValue => {
                         Config.options.background.mediaMode.backgroundShape = newValue;
                     }
-                    options: ([ 
+                    options: ([
                         "Circle", "Square", "Slanted", "Arch", "Arrow", "SemiCircle", "Oval", "Pill", "Triangle",
-                        "Diamond", "ClamShell", "Pentagon", "Gem", "Sunny", "VerySunny", "Cookie4Sided", "Cookie6Sided", 
-                        "Cookie7Sided", "Cookie9Sided", "Cookie12Sided", "Ghostish", "Clover4Leaf", "Clover8Leaf", "Burst", 
-                        "SoftBurst", "Flower", "Puffy", "PuffyDiamond", "PixelCircle", "Bun", "Heart" 
-                    ]).map(icon => { 
-                        return { 
-                            displayName: "", 
-                            shape: icon, 
-                            value: icon 
-                        } 
+                        "Diamond", "ClamShell", "Pentagon", "Gem", "Sunny", "VerySunny", "Cookie4Sided", "Cookie6Sided",
+                        "Cookie7Sided", "Cookie9Sided", "Cookie12Sided", "Ghostish", "Clover4Leaf", "Clover8Leaf", "Burst",
+                        "SoftBurst", "Flower", "Puffy", "PuffyDiamond", "PixelCircle", "Bun", "Heart"
+                    ]).map(icon => {
+                        return {
+                            displayName: "",
+                            shape: icon,
+                            value: icon
+                        }
                     })
                 }
             }
@@ -167,7 +159,7 @@ ContentPage {
                 }
             }
         }
-        
+
         ConfigSwitch {
             buttonIcon: "format_color_fill"
             text: Translation.tr("Change shell color to match album art")
@@ -190,7 +182,6 @@ ContentPage {
             }
         }
 
-
         ContentSubsection {
             title: Translation.tr("Text highlight style")
             ConfigSelectionArray {
@@ -199,7 +190,7 @@ ContentPage {
                     Config.options.background.mediaMode.syllable.textHighlightStyle = newValue;
                 }
                 options: [
-                    {   
+                    {
                         displayName: Translation.tr("Vertical"),
                         icon: "vertical_distribute",
                         value: 0
@@ -212,7 +203,7 @@ ContentPage {
                 ]
             }
         }
-        
+
     }
 
     ContentSection {
@@ -402,7 +393,7 @@ ContentPage {
                     }
                 }
             }
-            
+
 
             MaterialTextArea {
                 Layout.fillWidth: true
@@ -469,6 +460,18 @@ ContentPage {
             visible: settingsClock.cookiePresent
             title: Translation.tr("Cookie clock settings")
 
+            ConfigSwitch {
+                buttonIcon: "wand_stars"
+                text: Translation.tr("Auto styling with Gemini")
+                checked: Config.options.background.widgets.clock.cookie.aiStyling
+                onCheckedChanged: {
+                    Config.options.background.widgets.clock.cookie.aiStyling = checked;
+                }
+                StyledToolTip {
+                    text: Translation.tr("Uses Gemini to categorize the wallpaper then picks a preset based on it.\nYou'll need to set Gemini API key on the left sidebar first.\nImages are downscaled for performance, but just to be safe,\ndo not select wallpapers with sensitive information.")
+                }
+            }
+
             ConfigSpinBox {
                 enabled: Config.options.background.widgets.clock.cookie.backgroundStyle !== "shape"
                 icon: "add_triangle"
@@ -531,7 +534,7 @@ ContentPage {
 
             ConfigRow {
                 Layout.fillWidth: false
-                
+
                 ConfigSwitch {
                     buttonIcon: "wand_stars"
                     text: Translation.tr("Auto style the cookie clock preset")
@@ -572,7 +575,7 @@ ContentPage {
             }
         }
 
-        
+
 
         ContentSubsection {
             visible: settingsClock.cookiePresent
@@ -809,38 +812,38 @@ ContentPage {
                 Item {
                     Layout.fillWidth: true
                 }
-            }   
+            }
         }
 
-        Loader { 
+        Loader {
             id: backgroundShapeLoader
             active: false
             visible: active
             Layout.fillWidth: true
             sourceComponent: ContentSubsection {
                 title: Translation.tr("Background shape")
-                
+
                 ConfigSelectionArray {
                     currentValue: Config.options.background.widgets.clock.cookie.backgroundShape
                     onSelected: newValue => {
                         Config.options.background.widgets.clock.cookie.backgroundShape = newValue;
                     }
-                    options: ([ 
+                    options: ([
                         "Circle", "Square", "Slanted", "Arch", "Arrow", "SemiCircle", "Oval", "Pill", "Triangle",
-                        "Diamond", "ClamShell", "Pentagon", "Gem", "Sunny", "VerySunny", "Cookie4Sided", "Cookie6Sided", 
-                        "Cookie7Sided", "Cookie9Sided", "Cookie12Sided", "Ghostish", "Clover4Leaf", "Clover8Leaf", "Burst", 
-                        "SoftBurst", "Flower", "Puffy", "PuffyDiamond", "PixelCircle", "Bun", "Heart" 
-                    ]).map(icon => { 
-                        return { 
-                            displayName: "", 
-                            shape: icon, 
-                            value: icon 
-                        } 
+                        "Diamond", "ClamShell", "Pentagon", "Gem", "Sunny", "VerySunny", "Cookie4Sided", "Cookie6Sided",
+                        "Cookie7Sided", "Cookie9Sided", "Cookie12Sided", "Ghostish", "Clover4Leaf", "Clover8Leaf", "Burst",
+                        "SoftBurst", "Flower", "Puffy", "PuffyDiamond", "PixelCircle", "Bun", "Heart"
+                    ]).map(icon => {
+                        return {
+                            displayName: "",
+                            shape: icon,
+                            value: icon
+                        }
                     })
                 }
             }
         }
-        
+
 
         ContentSubsection {
             title: Translation.tr("Quote")
@@ -912,9 +915,11 @@ ContentPage {
     }
 
     ContentSection {
-        icon: "music_cast"
-        title: Translation.tr("Widget: Media")
-        tooltip: Translation.tr("You can reset the media player by middle-clicking on the widget in case of media source errors")
+        id: visualizerSection
+        icon: "equalizer"
+        title: Translation.tr("Widget: Visualizer")
+
+        readonly property bool isWave: Config.options.background.widgets.visualizer.mode === "wave"
 
         ConfigRow {
             Layout.fillWidth: true
@@ -923,208 +928,265 @@ ContentPage {
                 Layout.fillWidth: false
                 buttonIcon: "check"
                 text: Translation.tr("Enable")
-                checked: Config.options.background.widgets.media.enable
-                onCheckedChanged: {
-                    Config.options.background.widgets.media.enable = checked;
-                }
+                checked: Config.options.background.widgets.visualizer.enable
+                onCheckedChanged: Config.options.background.widgets.visualizer.enable = checked
             }
-            
-            RippleButtonWithShape {
-                shapeString: Config.options.background.widgets.media.backgroundShape
-                implicitWidth: 60
-                extraIcon: "edit"
-
-                onClicked: {
-                    mediaBackgroundShapeLoader.active = !mediaBackgroundShapeLoader.active;
-                }
-                StyledToolTip {
-                    text: Translation.tr("Edit the material shape")
-                }
-            }
-
-            Item {
-                Layout.fillWidth: true
-            }
-
-            ConfigSelectionArray {
+            Item { Layout.fillWidth: true }
+            ContentSubsection {
+                title: Translation.tr("Visualizer style")
                 Layout.fillWidth: false
-                currentValue: Config.options.background.widgets.media.placementStrategy
-                onSelected: newValue => {
-                    Config.options.background.widgets.media.placementStrategy = newValue;
-                }
-                options: [
-                    {
-                        displayName: Translation.tr("Draggable"),
-                        icon: "drag_pan",
-                        value: "free"
-                    },
-                    {
-                        displayName: Translation.tr("Least busy"),
-                        icon: "category",
-                        value: "leastBusy"
-                    },
-                    {
-                        displayName: Translation.tr("Most busy"),
-                        icon: "shapes",
-                        value: "mostBusy"
-                    }
-                ]
-            }
-        }
-
-
-        Loader { 
-            id: mediaBackgroundShapeLoader
-            active: false
-            visible: active
-            Layout.fillWidth: true
-            sourceComponent: ContentSubsection {
-                title: Translation.tr("Background shape")
-                
+                visible: Config.options.background.widgets.visualizer.enable
                 ConfigSelectionArray {
-                    currentValue: Config.options.background.widgets.media.backgroundShape
+                    Layout.fillWidth: false
+                    currentValue: Config.options.background.widgets.visualizer.mode
                     onSelected: newValue => {
-                        Config.options.background.widgets.media.backgroundShape = newValue;
+                        Config.options.background.widgets.visualizer.mode = newValue;
                     }
-                    options: ([ 
-                        "Circle", "Square", "Slanted", "Arch", "Arrow", "SemiCircle", "Oval", "Pill", "Triangle",
-                        "Diamond", "ClamShell", "Pentagon", "Gem", "Sunny", "VerySunny", "Cookie4Sided", "Cookie6Sided", 
-                        "Cookie7Sided", "Cookie9Sided", "Cookie12Sided", "Ghostish", "Clover4Leaf", "Clover8Leaf", "Burst", 
-                        "SoftBurst", "Flower", "Puffy", "PuffyDiamond", "PixelCircle", "Bun", "Heart" 
-                    ]).map(icon => { 
-                        return { 
-                            displayName: "", 
-                            shape: icon, 
-                            value: icon 
-                        } 
-                    })
+                    options: [
+                        { displayName: Translation.tr("Bars"), icon: "equalizer", value: "bars" },
+                        { displayName: Translation.tr("Wave"), icon: "airwave", value: "wave" }
+                    ]
                 }
             }
         }
 
-        ConfigRow {
-            uniform: true
-            ConfigSwitch {
-                buttonIcon: "opacity"
-                text: Translation.tr("Use album colors")
-                checked: Config.options.background.widgets.media.useAlbumColors
-                onCheckedChanged: {
-                    Config.options.background.widgets.media.useAlbumColors = checked;
-                }
-            }
-            ConfigSwitch {
-                buttonIcon: "colors"
-                text: Translation.tr("Tint art cover")
-                checked: Config.options.background.widgets.media.tintArtCover
-                onCheckedChanged: {
-                    Config.options.background.widgets.media.tintArtCover = checked;
-                }
-            }
-        }
+        ColumnLayout {
+            Layout.fillWidth: true
+            visible: Config.options.background.widgets.visualizer.enable
+            spacing: 16
 
-        ConfigRow {
-            uniform: true
-            ConfigSwitch {
-                buttonIcon: "block"
-                text: Translation.tr("Hide all controls")
-                checked: Config.options.background.widgets.media.hideAllButtons
-                onCheckedChanged: {
-                    Config.options.background.widgets.media.hideAllButtons = checked;
-                }
-                StyledToolTip {
-                    text: Translation.tr("Buttons will only be visible on hover")
-                }
-            }
-            ConfigSwitch {
-                buttonIcon: "skip_previous"
-                text: Translation.tr("Show previous toggle")
-                checked: Config.options.background.widgets.media.showPreviousToggle
-                onCheckedChanged: {
-                    Config.options.background.widgets.media.showPreviousToggle = checked;
-                }
-            }
-        }
-        ContentSubsection {
-            title: Translation.tr("Glow effect")
-            ConfigRow {
-                uniform: true
-                ConfigSwitch {
-                    buttonIcon: "backlight_high"
-                    text: Translation.tr("Enable")
-                    checked: Config.options.background.widgets.media.glow.enable
-                    onCheckedChanged: {
-                        Config.options.background.widgets.media.glow.enable = checked;
+            ContentSubsection {
+                title: Translation.tr("Visibility")
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSwitch {
+                        buttonIcon: "crop_free"
+                        text: Translation.tr("Hide when fullscreen/maximized")
+                        checked: Config.options.background.widgets.visualizer.hideWhenFullscreen
+                        onCheckedChanged: {
+                            Config.options.background.widgets.visualizer.hideWhenFullscreen = checked
+                            if (!checked) {
+                                Config.options.background.widgets.visualizer.hideWhenCovered = false
+                            }
+                        }
+                        StyledToolTip {
+                            text: Translation.tr("Hide the visualizer when a window is in fullscreen or maximized mode. (Recommended)")
+                        }
                     }
                 }
-                ConfigSpinBox {
-                    from: 5
-                    to: 100
-                    stepSize: 5
-                    icon: "brightness_5"
-                    text: Translation.tr("Brightness (%)")
-                    value: Config.options.background.widgets.media.glow.brightness
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSwitch {
+                        id: hideWhenCoveredSwitch
+                        buttonIcon: "lock"
+                        visible: Config.options.background.widgets.visualizer.hideWhenFullscreen
+                        text: Translation.tr("Also hide when covered")
+                        checked: Config.options.background.widgets.visualizer.hideWhenCovered
+                        onCheckedChanged: {
+                            Config.options.background.widgets.visualizer.hideWhenCovered = checked
+                        }
+                        StyledToolTip {
+                            text: Translation.tr("Hide the visualizer when covered by tiled windows.")
+                        }
+                    }
+
+                    // Ensure that "hide when covered" is visibly off when hide when fullscreen is turned off
+                    Binding {
+                        target: hideWhenCoveredSwitch
+                        property: "checked"
+                        value: Config.options.background.widgets.visualizer.hideWhenCovered
+                        when: !hideWhenCoveredSwitch.pressed
+                    }
+                }
+            }
+
+            ContentSubsection {
+                visible: Config.options.background.widgets.visualizer.mode === "wave"
+                title: Translation.tr("Performance mode")
+                tooltip: Translation.tr("Note: Auto mode requires 'power-profiles-daemon' (Arch) package")
+
+                ConfigSelectionArray {
+                    currentValue: Config.options.background.widgets.visualizer.renderEveryXFrames
+                    onSelected: newValue => {
+                        Config.options.background.widgets.visualizer.renderEveryXFrames = newValue;
+                    }
+                    options: [
+                        {
+                            displayName: Translation.tr("Auto"),
+                            icon: "auto_fix_high",
+                            value: -1,
+                        },
+                        {
+                            displayName: Translation.tr("Smooth mode"),
+                            icon: "speed",
+                            value: 1
+                        },
+                        {
+                            displayName: Translation.tr("Balanced mode"),
+                            icon: "balance",
+                            value: 2
+                        },
+                        {
+                            displayName: Translation.tr("Efficiency mode"),
+                            icon: "energy_savings_leaf",
+                            value: 4
+                        }
+                    ]
+                }
+            }
+
+            ContentSubsection {
+                title: Translation.tr("Behavior & Processing")
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSwitch {
+                        buttonIcon: "lock"
+                        text: Translation.tr("Show when locked")
+                        checked: Config.options.background.widgets.visualizer.showWhenLocked
+                        onCheckedChanged: {
+                            Config.options.background.widgets.visualizer.showWhenLocked = checked
+                        }
+                    }
+                    ConfigSwitch {
+                        buttonIcon: "flip"
+                        text: Translation.tr("Mono / Mirrored")
+                        checked: Config.options.background.widgets.visualizer.mono
+                        onCheckedChanged: {
+                            Config.options.background.widgets.visualizer.mono = checked
+                        }
+                    }
+                }
+
+                ConfigSlider {
+                    buttonIcon: "waves"
+                    text: Translation.tr("Data Averaging")
+                    value: (Config.options.background.widgets.visualizer.dataSmoothing ?? 0.5) * 100
+                    from: 0; to: 100
+                    stopIndicatorValues: [50]
                     onValueChanged: {
-                        Config.options.background.widgets.media.glow.brightness = value;
-                    }
-                }
-            }
-        }
-        ContentSubsection {
-            title: Translation.tr("Visualizer")
-
-            ConfigRow {
-                uniform: true
-
-                ConfigSwitch {
-                    buttonIcon: "bar_chart"
-                    text: Translation.tr("Enable")
-                    checked: Config.options.background.widgets.media.visualizer.enable
-                    onCheckedChanged: {
-                        Config.options.background.widgets.media.visualizer.enable = checked;
-                    }
-                }
-                
-                ConfigSpinBox {
-                    from: 0
-                    to: 100
-                    stepSize: 5
-                    icon: "opacity"
-                    text: Translation.tr("Opacity (%)")
-                    value: Config.options.background.widgets.media.visualizer.opacity * 100
-                    onValueChanged: {
-                        Config.options.background.widgets.media.visualizer.opacity = value / 100;
-                    }
-                }
-            }
-            
-            ConfigRow {
-                uniform: true
-                
-                ConfigSpinBox {
-                    from: 0
-                    to: 5
-                    stepSize: 1
-                    icon: "rounded_corner"
-                    text: Translation.tr("Smoothing")
-                    value: Config.options.background.widgets.media.visualizer.smoothing
-                    onValueChanged: {
-                        Config.options.background.widgets.media.visualizer.smoothing = value;
-                    }
-                }
-
-                ConfigSpinBox {
-                    from: 0
-                    to: 10
-                    stepSize: 1
-                    icon: "blur_on"
-                    text: Translation.tr("Blur")
-                    value: Config.options.background.widgets.media.visualizer.blur
-                    onValueChanged: {
-                        Config.options.background.widgets.media.visualizer.blur = value;
+                        Config.options.background.widgets.visualizer.dataSmoothing = value / 100
                     }
                 }
             }
 
+            ContentSubsection {
+                title: Translation.tr("Sizing & Resolution")
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSpinBox {
+                        icon: "height"
+                        text: Translation.tr("Max Height")
+                        value: Config.options.background.widgets.visualizer.height
+                        from: 60; to: 1080; stepSize: 10
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.height = value
+                        }
+                    }
+                    ConfigSpinBox {
+                        icon: "view_column"
+                        text: visualizerSection.isWave ? Translation.tr("Point Width") : Translation.tr("Bar Width")
+                        value: Config.options.background.widgets.visualizer.targetBarWidth
+                        from: 1; to: 200
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.targetBarWidth = value
+                        }
+                    }
+                }
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSpinBox {
+                        icon: "space_bar"
+                        text: visualizerSection.isWave ? Translation.tr("Point Gap") : Translation.tr("Bar Gap")
+                        value: Config.options.background.widgets.visualizer.barSpacing
+                        from: 0; to: 100
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.barSpacing = value
+                        }
+                    }
+                    ConfigSpinBox {
+                        icon: "line_weight"
+                        text: visualizerSection.isWave ? Translation.tr("Line Thickness") : Translation.tr("Border Width")
+                        value: Config.options.background.widgets.visualizer.waveBorderWidth
+                        from: 0; to: 20
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.waveBorderWidth = value
+                        }
+                    }
+                }
+            }
+
+            ContentSubsection {
+                title: Translation.tr("Appearance")
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSlider {
+                        buttonIcon: "opacity"
+                        text: Translation.tr("Master Opacity")
+                        value: Config.options.background.widgets.visualizer.opacity * 100
+                        from: 0; to: 100
+                        stopIndicatorValues: [50]
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.opacity = value / 100
+                        }
+                    }
+                }
+
+                ConfigRow {
+                    uniform: true
+                    ConfigSlider {
+                        buttonIcon: "speed"
+                        text: Translation.tr("Smoothing")
+                        value: Config.options.background.widgets.visualizer.smoothing * 100
+                        from: 0; to: 20
+                        stopIndicatorValues: [5]
+                        onValueChanged: {
+                            Config.options.background.widgets.visualizer.smoothing = value / 100
+                        }
+                    }
+                }
+
+                ConfigSlider {
+                    visible: visualizerSection.isWave
+                    buttonIcon: "format_color_fill"
+                    text: Translation.tr("Fill Opacity")
+                    value: Config.options.background.widgets.visualizer.waveFillOpacity * 100
+                    from: 0; to: 100
+                    stopIndicatorValues: [50]
+                    onValueChanged: {
+                        Config.options.background.widgets.visualizer.waveFillOpacity = value / 100
+                    }
+                }
+
+                ConfigSlider {
+                    visible: !visualizerSection.isWave
+                    buttonIcon: "format_color_reset"
+                    text: Translation.tr("Border Opacity")
+                    value: Config.options.background.widgets.visualizer.waveFillOpacity * 100
+                    from: 0; to: 100
+                    stopIndicatorValues: [50]
+                    onValueChanged: {
+                        Config.options.background.widgets.visualizer.waveFillOpacity = value / 100
+                    }
+                }
+
+                ConfigSlider {
+                    visible: !visualizerSection.isWave
+                    buttonIcon: "rounded_corner"
+                    text: Translation.tr("Bar Roundness")
+                    value: Config.options.background.widgets.visualizer.barRounding * 100
+                    from: 0; to: 50
+                    stopIndicatorValues: [25]
+                    onValueChanged: {
+                        Config.options.background.widgets.visualizer.barRounding = value / 100
+                    }
+                }
+            }
         }
     }
 }
