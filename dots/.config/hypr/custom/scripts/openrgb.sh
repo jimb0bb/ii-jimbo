@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
-BG="ffb599"
-DARK_MODE="true"
+BG="5a5892"
+DARK_MODE="false"
 
 # Color candidates (baked by matugen at template time)
-DARK_NORMAL="ff591a"
-LIGHT_NORMAL="ffffff"
-DARK_NORMAL_BOOSTED="ff591a"
-LIGHT_NORMAL_BOOSTED="ffffff"
+DARK_NORMAL="1a1852"
+LIGHT_NORMAL="7c78d8"
+DARK_NORMAL_BOOSTED="13105a"
+LIGHT_NORMAL_BOOSTED="635ef2"
 
 # --- Extract RGB from BG ---
 R=$((16#${BG:0:2}))

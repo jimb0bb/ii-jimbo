@@ -690,6 +690,14 @@ ContentPage {
                     Config.options.sidebar.quickToggles.android.columns = value;
                 }
             }
+            ConfigSwitch {
+                buttonIcon: "vpn_key"
+                text: Translation.tr("VPN toggles")
+                checked: Config.options.sidebar.quickToggles.enableVpnToggles
+                onCheckedChanged: {
+                    Config.options.sidebar.quickToggles.enableVpnToggles = checked;
+                }
+            }
         }
 
         ContentSubsection {
